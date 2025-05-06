@@ -6,8 +6,8 @@
     "version": "1.0",
     
     "permissions": [
-    "http://*/*",
-    "https://*/*"
+        "*://*.twitch.tv/*", 
+        "activeTab"         
     ],
 
     "browser_action": { 
@@ -19,7 +19,16 @@
         "128": "img/icon_128.png"
     },
 
-    "background": {
-        "scripts" : ["js/app.js"]
-    }
+    "content_scripts": [
+        {
+            "matches": ["*://*.twitch.tv/*"],
+            "js": ["js/app.js"],
+            "run_at": "document_idle" 
+        }
+    ],
+
+    "web_accessible_resources": [
+        "img/boobs.svg", 
+        "img/icon.png"
+    ]
 }
